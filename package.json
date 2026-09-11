@@ -1,0 +1,9 @@
+{
+  "name": "line-miniapp-richmenu-sample",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve -l 3000 ."
+  }
+}

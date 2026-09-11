@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#06c755" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>サンプルミニアプリ</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛣️</text></svg>" />
+  <!-- ?v= はキャッシュ対策。styles.css を変更したら数字を上げる -->
+  <link rel="stylesheet" href="styles.css?v=0.3.0" />
+  <!--
+    LIFF SDK(LINE Front-end Framework)
+    LINEアプリ内でプロフィール取得・メッセージ送信などを行うためのSDK。
+    読み込めない場合や src/config.js の LIFF_ID が未設定の場合は
+    「モックモード」(LINE非連携)で動作し、通常のブラウザで画面確認できます。
+  -->
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <nav id="tab-bar" class="tab-bar hidden" aria-label="メインメニュー">
+    <button type="button" class="tab-item" data-tab="home">
+      <span class="tab-icon">🏠</span><span>ホーム</span>
+    </button>
+    <button type="button" class="tab-item" data-tab="contacts">
+      <span class="tab-icon">📞</span><span>緊急連絡先</span>
+    </button>
+    <button type="button" class="tab-item" data-tab="mypage">
+      <span class="tab-icon">👤</span><span>マイページ</span>
+    </button>
+  </nav>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
