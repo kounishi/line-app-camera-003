@@ -6,10 +6,10 @@
  *   空文字のままだと「モックモード」で動作し、LINEと連携せずに通常のブラウザで
  *   全画面の動作確認ができます。
  *
- *   ※ 現在は 002 と同じLIFF ID を入れています。このアプリ(003)をLINEで開くには次のどちらかが必要です。
- *     (A) LINE Developersコンソールで、このLIFFアプリのエンドポイントURLを
- *         https://kounishi.github.io/line-app-camera-003/ に変更する(002 は開けなくなる)
- *     (B) 003 用に新しいLIFFアプリ(ミニアプリ)を作成し、発行されたIDをここに設定する
+ *   ※ 003 用に作成した LINEミニアプリチャネルの本番用LIFF ID を設定しています。
+ *     エンドポイントURL: https://kounishi.github.io/line-app-camera-003/
+ *     LIFF URL        : https://miniapp.line.me/2011584909-h9hK7SbT
+ *     ID を変えた場合は README の応答メッセージのURLも合わせて更新する
  *
  * ■ 公式アカウント関連
  *   OFFICIAL_ACCOUNT_URL : 友だち追加URL(例: 'https://lin.ee/xxxxxxx')
@@ -32,7 +32,7 @@ export const APP_VERSION = '0.3.0';
 /** 「当社」として表示する名称 */
 export const COMPANY_NAME = 'JAHIC';
 
-export const LIFF_ID = '2011517091-b9lPj4Bz';
+export const LIFF_ID = '2011584909-h9hK7SbT';
 
 export const OFFICIAL_ACCOUNT_URL = 'https://lin.ee/679vBSxY';
 export const OFFICIAL_ACCOUNT_ID = '@896brxjh';

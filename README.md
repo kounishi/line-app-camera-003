@@ -5,7 +5,9 @@ LINE公式アカウントの **リッチメニューをタップ → トーク�
 
 ビルド不要の静的Webアプリ(HTML / CSS / JavaScript のみ)で、GitHub Pagesで公開できます。
 
-- 公開URL(LIFFエンドポイントURL): **https://kounishi.github.io/line-app-camera-003/** (リポジトリ作成・GitHub Pages有効化後)
+- 公開URL(LIFFエンドポイントURL): **https://kounishi.github.io/line-app-camera-003/**
+- LIFF URL(LINEアプリで開く): `https://miniapp.line.me/2011584909-h9hK7SbT`
+- リポジトリ: https://github.com/kounishi/line-app-camera-003
 - 元にしたプロジェクト: https://github.com/kounishi/line-app-camera-002
 
 ## 002 からの主な変更点
@@ -61,18 +63,18 @@ LINE Official Account Manager(https://manager.line.biz/) → ホーム → リ�
 ## 応答メッセージの設定(サーバー不要の方法)
 
 LINE Official Account Manager → 設定 → 応答設定 で **応答メッセージ: オン** にし、ホーム → 自動応答メッセージ(応答メッセージ) で、次の6件を **キーワード応答(完全一致)** として登録します。
-`{LIFF_ID}` は `src/config.js` の `LIFF_ID` に置き換えてください。マイページの「リッチメニュー設定値(開発用)」を開くと、設定中の LIFF ID を埋め込んだ文面がそのまま表示されます。
+URLには `src/config.js` の `LIFF_ID`(`2011584909-h9hK7SbT`)を埋め込んでいます。LIFF ID を変えた場合は合わせて修正してください。マイページの「リッチメニュー設定値(開発用)」を開くと、設定中の LIFF ID を埋め込んだ文面がそのまま表示されるので、そこからコピーできます。
 
 | キーワード | 応答メッセージ(テキスト) |
 |---|---|
 | `お知らせ` | 最新のお知らせ・トピックスはこちらをご覧ください。<br>`https://jahic-etc.com/info/` |
-| `各種申請` | 各種申請はこちらからお手続きいただけます。<br>`https://miniapp.line.me/{LIFF_ID}?screen=apply`<br>※初回のみ、お客様の顧客コードとLINEアカウントの紐付けが必要です。 |
-| `ご請求額` | ご請求額はこちらからご確認いただけます。<br>`https://miniapp.line.me/{LIFF_ID}?screen=billing`<br>※初回のみ、お客様の顧客コードとLINEアカウントの紐付けが必要です。 |
-| `契約状況` | ご契約状況はこちらからご確認いただけます。<br>`https://miniapp.line.me/{LIFF_ID}?screen=contract`<br>※初回のみ、お客様の顧客コードとLINEアカウントの紐付けが必要です。 |
+| `各種申請` | 各種申請はこちらからお手続きいただけます。<br>`https://miniapp.line.me/2011584909-h9hK7SbT?screen=apply`<br>※初回のみ、お客様の顧客コードとLINEアカウントの紐付けが必要です。 |
+| `ご請求額` | ご請求額はこちらからご確認いただけます。<br>`https://miniapp.line.me/2011584909-h9hK7SbT?screen=billing`<br>※初回のみ、お客様の顧客コードとLINEアカウントの紐付けが必要です。 |
+| `契約状況` | ご契約状況はこちらからご確認いただけます。<br>`https://miniapp.line.me/2011584909-h9hK7SbT?screen=contract`<br>※初回のみ、お客様の顧客コードとLINEアカウントの紐付けが必要です。 |
 | `質問があります` | ご質問をこのトークにそのまま入力してください。担当者(AIチャット)がお答えします。<br>(AIチャットをWebhookで実装する場合は、この応答は登録せずWebhook側で返答する) |
-| `緊急連絡先` | 高速道路・ETCに関する緊急連絡先はこちらから検索できます。<br>`https://miniapp.line.me/{LIFF_ID}?screen=contacts`<br>事故・故障など緊急の場合は、道路緊急ダイヤル #9910 へ。 |
+| `緊急連絡先` | 高速道路・ETCに関する緊急連絡先はこちらから検索できます。<br>`https://miniapp.line.me/2011584909-h9hK7SbT?screen=contacts`<br>事故・故障など緊急の場合は、道路緊急ダイヤル #9910 へ。 |
 
-- テキスト内のURLはトーク上で自動的にリンクになります。`https://miniapp.line.me/{LIFF_ID}?screen=xxx` をタップするとミニアプリがその画面から起動します。
+- テキスト内のURLはトーク上で自動的にリンクになります。`https://miniapp.line.me/2011584909-h9hK7SbT?screen=xxx` をタップするとミニアプリがその画面から起動します。
 - 応答メッセージの代わりに **リッチメッセージ / カードタイプメッセージ** を使うと、ボタン付きの見た目にできます(アクションに同じURLを設定)。
 - **Webhook(Messaging API)を併用する場合**: 応答設定で「応答メッセージ」と「Webhook」を両方オンにすると、キーワードに一致したメッセージは応答メッセージが返し、それ以外(自由入力の質問など)はWebhookに届きます。Webhook側でも同じ6キーワードを判定して Flex Message 等で返信する構成にすれば、応答メッセージをオフにして一元管理することもできます。
 
@@ -190,12 +192,9 @@ git push -u origin main
 
 ### LINEアプリ内で確認
 
-`src/config.js` の `LIFF_ID` には現在 **002 と同じ本番用LIFF ID(`2011517091-b9lPj4Bz`)** を入れています。このLIFFアプリのエンドポイントURLは 002 の公開URLなので、003 をLINEで開くには次のどちらかが必要です。
+`src/config.js` の `LIFF_ID` には、003 用に作成した LINEミニアプリチャネルの **本番用LIFF ID(`2011584909-h9hK7SbT`)** を設定しています(エンドポイントURLは上記の公開URL)。002 のLIFFアプリはそのまま残しているため、002 と 003 は別々にLINEから開けます。
 
-- **(A) 既存LIFFアプリのエンドポイントURLを変更する**: LINE Developersコンソールで、エンドポイントURLを `https://kounishi.github.io/line-app-camera-003/` に変更する(002 はLINEから開けなくなる)。`LIFF_ID` はそのまま。
-- **(B) 003 用にLIFFアプリを新規作成する**(推奨): 下記「LINE Developersコンソールの設定」で新しいLIFFアプリを追加し、発行されたIDを `LIFF_ID` に設定する。応答メッセージのURLもその新しいIDにする。
-
-設定後、スマートフォンのLINEで `https://miniapp.line.me/{LIFF_ID}` を開くか、公式アカウントのリッチメニューから起動します。
+スマートフォンのLINEで `https://miniapp.line.me/2011584909-h9hK7SbT` を開く(自分にトークで送ってタップ)か、公式アカウントのリッチメニュー → 応答メッセージのリンクから起動します。
 未認証ミニアプリの「本番用」LIFF IDはエンドユーザーが誰でも開けます。「開発用」LIFF IDはチャネルの権限設定でAdminまたはTesterになっているLINEアカウントでしか開けません(「システムエラー」になる場合はTesterとして招待してください)。
 
 ## LINE Developersコンソールの設定
