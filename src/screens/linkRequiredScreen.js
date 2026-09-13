@@ -2,7 +2,7 @@ import { COMPANY_NAME } from '../config.js';
 
 /**
  * 顧客コード未紐付けのユーザーが、紐付けが必要な機能(各種申請・ご請求額・契約状況)を開いたときの案内画面
- *   リッチメニュー → トークのリンク → ?screen=apply などで直接開いた場合も、この画面を経由して紐付けに進む
+ *   リッチメニューのリンクから ?screen=apply などで直接開いた場合も、この画面を経由して紐付けに進む
  */
 export function renderLinkRequiredScreen(root, { featureName, onLink, onBack }) {
   root.innerHTML = `

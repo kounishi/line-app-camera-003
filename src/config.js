@@ -9,7 +9,7 @@
  *   ※ 003 用に作成した LINEミニアプリチャネルの本番用LIFF ID を設定しています。
  *     エンドポイントURL: https://kounishi.github.io/line-app-camera-003/
  *     LIFF URL        : https://miniapp.line.me/2011584909-h9hK7SbT
- *     ID を変えた場合は README の応答メッセージのURLも合わせて更新する
+ *     ID を変えた場合は、リッチメニューの各ボタンに設定したURL(README参照)も合わせて更新する
  *
  * ■ 公式アカウント関連
  *   OFFICIAL_ACCOUNT_URL : 友だち追加URL(例: 'https://lin.ee/xxxxxxx')
@@ -27,7 +27,7 @@
  */
 
 export const APP_NAME = 'サンプルミニアプリ';
-export const APP_VERSION = '0.3.0';
+export const APP_VERSION = '0.3.1';
 
 /** 「当社」として表示する名称 */
 export const COMPANY_NAME = 'JAHIC';

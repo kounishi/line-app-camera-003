@@ -1,5 +1,5 @@
 import { APP_NAME, APP_VERSION, LIFF_ID, NOTICE_URL, OFFICIAL_ACCOUNT_URL } from '../config.js';
-import { RICH_MENU, buildReplyMessage } from '../data/richMenu.js';
+import { RICH_MENU, buildRichMenuAction } from '../data/richMenu.js';
 import { LINK_METHOD_LABELS, getLink, unlinkCustomer } from '../lib/account.js';
 import { clearAllApplications, loadApplications } from '../lib/applications.js';
 import { showAlert, showConfirm, showToast } from '../lib/dialogs.js';
@@ -62,7 +62,7 @@ export function renderMyPageScreen(root, { goHome, goLink }) {
         <section class="card">
           <details class="dev-details">
             <summary class="card-label">リッチメニュー設定値(開発用)</summary>
-            <p class="card-text">LINE Official Account Manager で、リッチメニューの各ボタンを「テキスト」アクションにし、送信テキストをキーワードにした応答メッセージを設定します。</p>
+            <p class="card-text">LINE Official Account Manager のリッチメニューで、各ボタンに次のアクションを設定します。ミニアプリの各画面とお知らせは「リンク」で1タップで直接開き、「質問する」だけ「テキスト」でトークに送信します。</p>
             <div class="richmenu-settings" data-richmenu></div>
           </details>
         </section>
@@ -214,16 +214,20 @@ export function renderMyPageScreen(root, { goHome, goLink }) {
   for (const item of RICH_MENU) {
     const block = document.createElement('div');
     block.className = 'richmenu-setting';
+    const action = buildRichMenuAction(item, { liffId: LIFF_ID, noticeUrl: NOTICE_URL });
     block.innerHTML = `
       <div class="richmenu-setting-title"><span data-icon></span> <span data-label></span></div>
-      <div class="kv-row"><span>送信テキスト</span><span data-text></span></div>
-      <div class="richmenu-reply-label">応答メッセージ</div>
-      <pre class="richmenu-reply" data-reply></pre>
+      <div class="kv-row"><span>アクション種別</span><span data-type></span></div>
+      <div class="richmenu-reply-label" data-value-label></div>
+      <pre class="richmenu-reply" data-value></pre>
+      ${action.reply ? '<div class="richmenu-reply-label">応答メッセージ(応答メッセージ機能に登録する場合)</div><pre class="richmenu-reply" data-reply></pre>' : ''}
     `;
     block.querySelector('[data-icon]').textContent = item.icon;
     block.querySelector('[data-label]').textContent = item.label;
-    block.querySelector('[data-text]').textContent = item.text;
-    block.querySelector('[data-reply]').textContent = buildReplyMessage(item, { liffId: LIFF_ID, noticeUrl: NOTICE_URL });
+    block.querySelector('[data-type]').textContent = action.type;
+    block.querySelector('[data-value-label]').textContent = action.type === 'テキスト' ? '送信テキスト' : 'URL';
+    block.querySelector('[data-value]').textContent = action.value;
+    if (action.reply) block.querySelector('[data-reply]').textContent = action.reply;
     richmenuEl.appendChild(block);
   }
 

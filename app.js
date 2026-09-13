@@ -13,8 +13,7 @@ import { renderStatusScreen } from './src/screens/statusScreen.js';
 
 /**
  * 画面一覧
- *   リッチメニュー → トークに送信されたテキスト → 応答メッセージ内のリンク(LIFF URL + ?screen=xxx)から
- *   該当画面を直接開く。
+ *   リッチメニューの各ボタン(「リンク」アクション)に LIFF URL + ?screen=xxx を設定し、該当画面を1タップで直接開く。
  *   例: https://miniapp.line.me/{LIFF_ID}?screen=apply
  *
  *   requiresLink: 顧客コードの紐付けが必要な画面。未紐付けなら案内画面(linkRequiredScreen)を表示し、
@@ -118,7 +117,7 @@ tabBar.addEventListener('click', (event) => {
 
 /**
  * 起動時URLから初期画面を決める
- *   ?screen=xxx            トークのリンクからの直接起動(LIFF初期化後はこの形になる)
+ *   ?screen=xxx            リッチメニューのリンクからの直接起動(LIFF初期化後はこの形になる)
  *   ?liff.state=?screen=x  LIFF初期化前の形(念のため対応)
  *   #xxx                   外部ブラウザでの動作確認用
  */
